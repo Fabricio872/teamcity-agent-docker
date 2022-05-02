@@ -6,8 +6,7 @@ RUN apt update && apt upgrade -y
 RUN apt -y install software-properties-common
 
 RUN mkdir /root/.ssh
-RUN echo -e "Host *\n    StrictHostKeyChecking no" >> /root/.ssh/config
-RUN echo -e "name=docker\n" > /data/teamcity_agent/conf/buildAgent.dist.properties
+RUN echo "Host *\n    StrictHostKeyChecking no" > /root/.ssh/config -e
 
 COPY buildAgent.dist.properties /opt/buildagent/conf/buildAgent.dist.properties
 
